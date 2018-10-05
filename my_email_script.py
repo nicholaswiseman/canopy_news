@@ -22,4 +22,4 @@ def send_email(fromaddr,password,toaddr,subject,body):
 	server.sendmail(fromaddr, toaddr, mail)
 
 if __name__ == '__main__':	
-	send_email('canopy.updates@gmail.com','nickandjosh','njww06@mun.ca','test sub','test body')
+	send_email('canopy.updates@gmail.com','not_the_pw','njww06@mun.ca','test sub','test body')
