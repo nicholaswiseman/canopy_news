@@ -25,10 +25,15 @@ def is_recent(url):
 	if (url.get('href') in old_urls):
 		return False
 	elif not (url.get('href') in old_urls):
-		file = open('urls.txt','a')
-		file.write(f"\n{url.get('href')}")
-		file.close()
+		#file = open('urls.txt','a')
+		#file.write(f"\n{url.get('href')}")
+		#file.close()
 		return True
+
+def append_url(url):
+	file = open('urls.txt','a')
+	file.write(f"\n{url.get('href')}")
+	file.close()
 
 if __name__ == '__main__':
 	while 1:
@@ -40,6 +45,11 @@ if __name__ == '__main__':
 		for url in soup.find_all('a'):
 			if is_news(url) and is_recent(url):
 				#here we send an email if its new. For this to work you will need the pw
-				msg = f"Hey Josh,\n\nA news release from Canopy Growth has been posted:\n\n{url.get('href')}\n\nYour friend,\nCanopy Updates"
-				send_email('canopy.updates@gmail.com','not_the_pw','nicholas.jw.wiseman@gmail.com','Canopy Growth News Release',msg)
+				try:
+					msg = f"Hey Josh,\n\nA news release from Canopy Growth has been posted:\n\n{url.get('href')}\n\nYour friend,\nCanopy Updates"
+					send_email('canopy.updates@gmail.com','nickandjosh','jlevesque11@gmail.com','Canopy Growth News Release',msg)
+					append_url(url)
+					print("E-mail sent!")
+				except:
+					print("Error sending email! Check e-mail and password and run again!\n")
 		time.sleep(30)		
