@@ -50,7 +50,7 @@ if __name__ == '__main__':
 					#here we send an email if its new. For this to work you will need the pw
 					try:
 						msg = "Hey Josh,\n\nA news release from Canopy Growth has been posted:\n\n{}\n\nYour friend,\nCanopy Updates".format(url.get('href'))
-						send_email('canopy.updates@gmail.com','nickandjosh','jlevesque11@gmail.com','Canopy Growth News Release',msg)
+						send_email('canopy.updates@gmail.com','not_the_pw','example@gmail.com','Canopy Growth News Release',msg)
 						append_url(url)
 						print("E-mail sent! {}".format(datetime.datetime.now()))
 					except:
